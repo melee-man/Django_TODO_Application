@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'my_todo_application/bootstrap.min.css' %}"> <!--offline-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'my_todo_application/mdb.min.css' %}">    <!-- offline -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.1/css/mdb.min.css" rel="stylesheet">
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'my_todo_application/style.css' %}">
+
+    <title>Todo List</title>
+
+</head>
+
+<body>
+    <header class="">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top mb-2 scrolling-navbar ">
+
+            <div class="container-fluid">
+
+                <!-- Navbar brand -->
+                {% if user.is_authenticated %}
+
+                {% else %}
+                     <a class="navbar-brand deep-orange-text" href="{% url 'index' %}"><i class="fas fa-stroopwafel"></i>TDAPPLICATION</a>
+                {% endif %}
+                <!-- Collapse button -->
+                <button class="deep-orange-text navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                        aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Collapsible content -->
+                <div class="deep-orange-text collapse navbar-collapse" id="basicExampleNav">
+
+                    <!-- Links -->
+                    <!-- Links -->
+                    <ul class="navbar-nav mr-auto smooth-scroll">
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link deep-orange-text" href="{% url 'user_dashboard' %}">Home</a>
+                            </li>
+
+                                <a class="nav-link deep-orange-text" href="#">Profile</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link deep-orange-text" href="{% url 'logout' %}">Logout</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link deep-orange-text" href="{% url 'index' %}">Home</a>
+                            </li>
+
+                            <a class="nav-link deep-orange-text" href="{% url 'register' %}#">Register</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link deep-orange-text" href="{% url 'login' %}">Login</a>
+                            </li>
+                        {% endif %}
+
+                    </ul>
+                    <!-- Links -->
+
+                    <!-- Links -->
+
+                    <ul class="navbar-nav nav-flex-icons">
+                        <li class="nav-item">
+                            <a class="nav-link"><i class="fab fa-facebook-f deep-orange-text"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"><i class="fab fa-twitter deep-orange-text"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"><i class="fab fa-instagram deep-orange-text"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Collapsible content -->
+
+            </div>
+
+        </nav>
+
+        <!--Mask-->
+        {% block header %}
+
+        {% endblock header %}
+        <!--/.Mask-->
+        </div
+    </header>
+
+    <main class = "container">
+        <div class = "row m-0 p-0 h-100">
+            <div class = "col-md-2">
+
+            </div>
+
+            <div class = "col-md-8">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class = "alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% block content %}
+
+                {% endblock content%}
+
+            </div>
+
+            <div class = "col-md-2">
+
+            </div>
+        </div>
+
+    </main>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'my_blog_app/jquery.min.js' %}"></script> <!-- offline -->
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script type="text/javascript" src="{% static 'my_blog_app/popper.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static 'my_blog_app/bootstrap.min.js' %}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.1/js/mdb.min.js"></script>
+    <script type="text/javascript" src="{% static 'my_blog_app/mdb.min.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display|Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Alegreya|Crimson+Text|Ropa+Sans');
+@import url('https://fonts.googleapis.com/css?family=Radley');
+
+html,
+body,
+header,
+#intro {
+    height: 100%;
+	font-family: 'Ropa Sans', sans-serif;
+	letter-spacing: 1px;
+}
+#radley{
+font-family: 'Radley', serif;
+}
+
+.socialbuttons{
+	background-color: #211F1D;
+	}
+.page-footer{
+	background-color: #111110;
+	}
+
+#examples{
+background-color: #F6F4F2;
+}
+#intro {
+    background: url("./todo.jpg")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.navbar{
+	box-shadow: none !important;
+}
+
+.navbar-brand{
+  font-family: 'Major Mono Display', monospace;
+  
+}
+
+.top-nav-collapse {
+  background-color: black;
+}
+@media (max-width: 768px) {
+  .navbar:not(.top-nav-collapse) {
+    background-color: black;
+  }
+}
+@media (min-width: 800px) and (max-width: 850px) {
+  .navbar:not(.top-nav-collapse) {
+    background-color: black;
+  }
+}

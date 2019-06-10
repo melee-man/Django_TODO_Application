@@ -1,0 +1,40 @@
+{% extends 'my_todo_application\base.html'%}
+{% block content %}
+<div class="p-5">
+    <div class="card mt-5 mb-3">
+        <div class = "card-body">
+            <div class = " mb-2">
+                <h6 class = "mr-2 mb-2 mt-2">{{ object.task_name }}</h6>
+                <!--<small class = "text-muted">{{ post.date_posed}}</small>-->
+                <p>
+                    Task status:
+                    <small class = "text-muted mr-2 mb-2 mt-2">
+                        {{ object.task_status }}
+                    </small>
+
+                </p>
+                <p>
+                    Due date:
+                    <small class = "text-muted mr-2 mb-2 mt-2">
+                        {{ object.due_date|date:"F d, Y"}}
+                    </small>
+                </p>
+
+                <!-- filters for formating dates in python F= full month, d = dayin two digits, Y full year -->
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-2">
+        <a class = "btn btn-sm btn-success mt-1 mb-1"
+           href ="#">
+            update task
+        </a>
+        <a class = "btn btn-sm btn-danger mt-1 mb-1"
+           href ="#">
+            delete task
+        </a>
+    </div>
+
+</div>
+{% endblock content%}
