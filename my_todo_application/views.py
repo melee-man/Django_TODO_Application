@@ -22,7 +22,8 @@ def index(request):
 def userdashboard(request):
     context = {
         'tasks' : Task.objects.all(),
-        'user' : request.user
+        'user' : request.user,
+        'paginate_by' : 5
     }
     return render(request, 'my_todo_application/home.html', context)
 

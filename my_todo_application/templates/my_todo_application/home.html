@@ -29,6 +29,24 @@
                             {% endfor %}
                             </tbody>
                 </table>
+                {% if is_paginated %}
+                    {% if page_obj.has_previous %}
+                        <a class = "btn btn-sm btn-outline-danger mb-4 ml-0 mr-0 p-1" href="?page=1">first</a>
+                        <a class = "btn btn-sm btn-outline-danger mb-4 ml-1 mr-0 p-1" href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                            <a class = "btn btn-sm btn-danger mb-4 ml-1 mr-0 p-1" href="?page={{ num }}">{{ num }}</a>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                            <a class = "btn btn-sm btn-outline-danger  mb-4 ml-1 mr-1 p-1" href="?page={{ num }}">{{ num }}</a>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <a class = "btn btn-sm btn-outline-danger mb-4 ml-0 mr-1 p-1 " href="?page={{ page_obj.next_page_number}}">next</a>
+                        <a class = "btn btn-sm btn-outline-danger mb-4 ml-0 mr-0 p-1" href="?page={{ page_obj.paginator.num_pages }}">last</a>
+                    {% endif %}
+                {% endif %}
                 <a href="{% url 'task-create' %}"><button class=" btn btn-info btn-sm">Add New Task</button></a>
             </div>
         </div>
