@@ -1,0 +1,22 @@
+{% extends 'my_todo_application/base.html' %}
+{% block content %}
+<div class = "border mt-2 p-3 content-section">
+    <form method="POST">
+        {% csrf_token %}
+
+        <fieldset class="form-group">
+            <legend class="border-bottom">Delete Task</legend>
+            <h6>Are you sure you want to delete the task: {{ object.task_name }} ?</h6>
+        </fieldset>
+
+        <div class=""form-group mt-3>
+            <button class="btn btn-sm btn-danger" type="submit">Yes, Delete</button>
+            <a class="btn btn-sm btn-success" href="{% url 'user_dashboard' %}">
+                Cancel
+            </a>
+        </div>
+    </form>
+
+</div>
+
+{% endblock content%}
